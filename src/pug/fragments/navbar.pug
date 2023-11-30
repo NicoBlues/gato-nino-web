@@ -1,0 +1,43 @@
+<nav id="navbar" class="sticky top-0 bg-white border-gray-200 dark:bg-zinc-950 dark:border-gray-700 z-40">
+        <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
+            <a id="contenedor-nino" href="#" class="flex items-center">
+                <img id="imagen-nino" src="../../resources/images/gatoFondoAmarillo.svg" class="h-12 mr-4" alt="Gato Nino Logo" />
+                <span id="texto-nino" class="self-center text-2xl font-semibold whitespace-nowrap tracking-wide dark:text-white uppercase">Gato Nino
+            </a>
+            <div class="flex items-center ml-auto">
+            include sidebar.pug
+            <h3 id="menu-texto" class="text-white mr-4 mt-1 hidden md:inline">Menu</h3>
+            <button id="boton-sidebar" class="text-black bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-xl text-sm px-3 py-1.5 dark:bg-teal-600 dark:hover:bg-teal-700 focus:outline-none dark:focus:ring-teal-800 justify-self-start" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+            </div>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
+            </div>
+            </div>
+</nav>
+script.
+  document.addEventListener("DOMContentLoaded", function() {
+      var navBar = document.getElementById("navbar");
+      var botonSidebar = document.getElementById("boton-sidebar");
+      var textoNino = document.getElementById("texto-nino");
+      var menuTexto = document.getElementById("menu-texto");
+
+      window.addEventListener("scroll", function(){
+          var scrollPosY = window.scrollY;
+          if(scrollPosY > 0) {
+              navBar.classList.remove("dark:bg-zinc-950");
+              navBar.classList.add("bg-gradient-to-r", "from-cyan-500", "to-blue-500");
+              navBar.classList.add("flex");
+              botonSidebar.classList.add("hidden");
+              menuTexto.classList.remove("md:inline");
+          } else {
+              navBar.classList.remove("bg-gradient-to-r", "from-cyan-500", "to-blue-500");
+              navBar.classList.add("dark:bg-zinc-950");
+              navBar.classList.remove("flex");
+              botonSidebar.classList.remove("hidden");
+              menuTexto.classList.add("md:inline");
+          }
+      });
+  });
